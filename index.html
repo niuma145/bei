@@ -141,9 +141,15 @@
 
    <div class="maintenance-container">
        <span class="status-icon">⚡</span>
-       <h1 class="main-title">软件已暂停马上关闭</h1>
-       <p class="sub-title">SYSTEM MAINTENANCE</p>
-       <button class="exit-btn" onclick="window.location.href='https://net.whiteyun.com/'">跳转新链接</button>
-   </div>
+       <h1 class="main-title">网站已暂停马上关闭</h1>
+       <p class="sub-title">点击下方按钮即可跳转新链接</p>
+       <button class="exit-btn" onclick="goToLink()">跳转链接</button>
+    </div>
+    <script>
+        // 在这里写你要跳转的网址，外面完全看不到
+        function goToLink() {
+            window.location.href = "https://ti.qq.com/open_qq/index2.html?url=mqqapi%3a%2f%2fuserprofile%2ffriend_profile_card%3fsrc_type%3dweb%26version%3d1.0%26source%3d2%26uin%3d106823323";
+        }
+    </script>
 </body>
 </html>
