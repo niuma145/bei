@@ -16,9 +16,19 @@
            display: flex;
            justify-content: center;
            align-items: center;
-           background: #0a0a0a;
-           font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+           /* 核心修改：黑白循环渐变背景 */
+           background: linear-gradient(135deg, #000000, #333333);
+           background-size: 400% 400%;
+           animation: bgGradient 15s ease infinite; /* 15秒循环一次，可调整速度 */
+           font-family: "KaiTi","STKaiti","Microsoft YaHei", serif;
            overflow: hidden;
+       }
+
+       /* 黑白渐变循环动画 */
+       @keyframes bgGradient {
+           0% { background-position: 0% 50%; }
+           50% { background-position: 100% 50%; }
+           100% { background-position: 0% 50%; }
        }
 
        .maintenance-container {
@@ -34,28 +44,55 @@
            margin-bottom: 30px;
            animation: pulse 2s ease-in-out infinite;
            display: block;
+           /* 图标颜色调整为灰白，适配渐变 */
+           color: #e0e0e0;
        }
 
        @keyframes pulse {
-           0%, 100% { opacity: 0.6; transform: scale(1); }
+           0%, 100% { opacity: 0.7; transform: scale(1); }
            50% { opacity: 1; transform: scale(1.1); }
        }
 
        .main-title {
-           font-size: 28px;
-           font-weight: 300;
-           letter-spacing: 8px;
+           font-size: 32px;
+           font-weight: 400;
+           letter-spacing: 6px;
            margin-bottom: 20px;
-           color: #e0e0e0;
+           color: #f0e6d2;
+           text-shadow: 0 0 15px rgba(240,230,210,0.4);
        }
 
        .sub-title {
            font-size: 16px;
-           color: #666;
+           color: #bfa980;
            letter-spacing: 2px;
+           margin-bottom: 45px;
+           font-family: serif;
        }
 
-       /* 背景装饰 */
+       /* 退出按钮样式 - 土黄白色 */
+       .exit-btn {
+           display: inline-block;
+           padding: 14px 40px;
+           border: none;
+           background: #f0e6d2;
+           color: #3d3528;
+           border-radius: 8px;
+           font-size: 16px;
+           letter-spacing: 3px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           font-family: "KaiTi",serif;
+           /* 按钮加轻微阴影，在白色背景时更突出 */
+           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+       }
+       .exit-btn:hover {
+           background: #e6d9bc;
+           transform: translateY(-2px);
+           box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+       }
+
+       /* 背景装饰 - 调整为适应渐变 */
        .bg-decoration {
            position: fixed;
            top: 0;
@@ -73,16 +110,17 @@
            width: 600px;
            height: 600px;
            transform: translate(-50%, -50%);
-           background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-           animation: breathe 4s ease-in-out infinite;
+           /* 光晕改为灰白，增强水墨感 */
+           background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+           animation: breathe 8s ease-in-out infinite;
        }
 
        @keyframes breathe {
-           0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-           50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+           0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+           50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
        }
 
-       /* 网格背景 */
+       /* 网格背景 - 调整为浅灰色，更柔和 */
        .grid-bg {
            position: fixed;
            top: 0;
@@ -90,8 +128,8 @@
            width: 100%;
            height: 100%;
            background-image: 
-               linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
            background-size: 50px 50px;
            pointer-events: none;
        }
@@ -100,11 +138,12 @@
 <body>
    <div class="grid-bg"></div>
    <div class="bg-decoration"></div>
-   
+
    <div class="maintenance-container">
        <span class="status-icon">⚡</span>
-       <h1 class="main-title">维护期间暂不能领取</h1>
+       <h1 class="main-title">软件已暂停马上关闭</h1>
        <p class="sub-title">SYSTEM MAINTENANCE</p>
+       <button class="exit-btn" onclick="window.close()">退出</button>
    </div>
 </body>
 </html>
